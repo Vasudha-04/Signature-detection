@@ -1,0 +1,172 @@
+{% extends "base.html" %}
+
+{% block title %}Verify Signature - SignatureGuard{% endblock %}
+
+{% block content %}
+<div class="text-center mb-5">
+    <h1 class="display-4 fw-bold mb-3">Signature Verification</h1>
+    <p class="lead text-muted">Upload a signature image to verify its authenticity</p>
+</div>
+
+<div class="row justify-content-center">
+    <div class="col-lg-8">
+        <div class="card border-0 shadow-sm">
+            <div class="card-body p-5">
+                <form method="POST" enctype="multipart/form-data" id="verificationForm">
+                    <div class="upload-area" id="uploadArea">
+                        <input type="file" name="file" id="fileInput" accept="image/*" required style="display: none;">
+                        <div class="upload-content">
+                            <i class="fas fa-cloud-upload-alt fa-4x text-primary mb-3"></i>
+                            <h4>Drop your signature image here</h4>
+                            <p class="text-muted mb-3">or click to browse</p>
+                            <button type="button" class="btn btn-outline-primary" onclick="document.getElementById('fileInput').click()">
+                                <i class="fas fa-folder-open me-2"></i>Choose File
+                            </button>
+                        </div>
+                        <div class="file-info d-none">
+                            <i class="fas fa-file-image fa-3x text-success mb-3"></i>
+                            <h4 id="fileName"></h4>
+                            <p class="text-muted mb-3" id="fileSize"></p>
+                            <button type="button" class="btn btn-outline-secondary" onclick="resetFile()">
+                                <i class="fas fa-times me-2"></i>Remove File
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center mt-4">
+                        <button type="submit" class="btn btn-primary-custom btn-lg" id="submitBtn" disabled>
+                            <i class="fas fa-search me-2"></i>Verify Signature
+                        </button>
+                    </div>
+                </form>
+
+                {% if result %}
+                <div class="result-card {% if 'Genuine' in result %}result-genuine{% else %}result-forged{% endif %}" id="resultCard">
+                    <div class="d-flex align-items-center justify-content-center mb-3">
+                        {% if 'Genuine' in result %}
+                            <i class="fas fa-check-circle fa-4x"></i>
+                        {% else %}
+                            <i class="fas fa-times-circle fa-4x"></i>
+                        {% endif %}
+                    </div>
+                    <h2 class="mb-3">{{ result }}</h2>
+                    <p class="mb-0">
+                        {% if 'Genuine' in result %}
+                            This signature appears to be authentic and matches the expected patterns.
+                        {% else %}
+                            This signature shows characteristics of a potential forgery.
+                        {% endif %}
+                    </p>
+                    <div class="mt-4">
+                        <button class="btn btn-outline-primary" onclick="resetVerification()">
+                            <i class="fas fa-redo me-2"></i>Verify Another
+                        </button>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="row mt-5">
+            <div class="col-md-6">
+                <div class="bg-light rounded-3 p-4 text-center">
+                    <i class="fas fa-info-circle fa-3x text-primary mb-3"></i>
+                    <h5>Supported Formats</h5>
+                    <p class="text-muted mb-0">JPG, PNG, GIF, BMP, TIFF</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="bg-light rounded-3 p-4 text-center">
+                    <i class="fas fa-lock fa-3x text-primary mb-3"></i>
+                    <h5>Privacy Protected</h5>
+                    <p class="text-muted mb-0">Your images are processed securely</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+const uploadArea = document.getElementById('uploadArea');
+const fileInput = document.getElementById('fileInput');
+const submitBtn = document.getElementById('submitBtn');
+const uploadContent = document.querySelector('.upload-content');
+const fileInfo = document.querySelector('.file-info');
+const fileName = document.getElementById('fileName');
+const fileSize = document.getElementById('fileSize');
+
+// Drag and drop functionality
+uploadArea.addEventListener('dragover', (e) => {
+    e.preventDefault();
+    uploadArea.classList.add('dragover');
+});
+
+uploadArea.addEventListener('dragleave', () => {
+    uploadArea.classList.remove('dragover');
+});
+
+uploadArea.addEventListener('drop', (e) => {
+    e.preventDefault();
+    uploadArea.classList.remove('dragover');
+    
+    const files = e.dataTransfer.files;
+    if (files.length > 0 && files[0].type.startsWith('image/')) {
+        handleFile(files[0]);
+    }
+});
+
+// File input change
+fileInput.addEventListener('change', (e) => {
+    if (e.target.files.length > 0) {
+        handleFile(e.target.files[0]);
+    }
+});
+
+// Handle file selection
+function handleFile(file) {
+    fileName.textContent = file.name;
+    fileSize.textContent = `Size: ${(file.size / 1024).toFixed(2)} KB`;
+    
+    uploadContent.classList.add('d-none');
+    fileInfo.classList.remove('d-none');
+    submitBtn.disabled = false;
+    
+    // Store file for form submission
+    const dataTransfer = new DataTransfer();
+    dataTransfer.items.add(file);
+    fileInput.files = dataTransfer.files;
+}
+
+// Reset file selection
+function resetFile() {
+    fileInput.value = '';
+    uploadContent.classList.remove('d-none');
+    fileInfo.classList.add('d-none');
+    submitBtn.disabled = true;
+}
+
+// Reset verification
+function resetVerification() {
+    resetFile();
+    const resultCard = document.getElementById('resultCard');
+    if (resultCard) {
+        resultCard.style.display = 'none';
+    }
+}
+
+// Form submission loading state
+document.getElementById('verificationForm').addEventListener('submit', function() {
+    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Processing...';
+    submitBtn.disabled = true;
+});
+
+// Click to upload
+uploadArea.addEventListener('click', (e) => {
+    if (e.target.tagName !== 'BUTTON' && !e.target.closest('button')) {
+        fileInput.click();
+    }
+});
+</script>
+{% endblock %}

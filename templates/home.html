@@ -1,0 +1,114 @@
+{% extends "base.html" %}
+
+{% block title %}Home - SignatureGuard{% endblock %}
+
+{% block content %}
+<div class="hero-section">
+    <h1 class="hero-title">Advanced Signature Verification System</h1>
+    <p class="hero-subtitle">Protect your documents with AI-powered signature authentication</p>
+    <div class="d-flex gap-3 justify-content-center flex-wrap">
+        <a href="/verify" class="btn btn-primary-custom btn-lg">
+            <i class="fas fa-upload me-2"></i>Verify Signature
+        </a>
+        <a href="/about" class="btn btn-outline-primary btn-lg">
+            <i class="fas fa-info-circle me-2"></i>Learn More
+        </a>
+    </div>
+</div>
+
+<div class="row g-4 mt-5">
+    <div class="col-md-4">
+        <div class="feature-card">
+            <div class="feature-icon">
+                <i class="fas fa-brain"></i>
+            </div>
+            <h3>AI-Powered Analysis</h3>
+            <p>Advanced neural networks analyze signature patterns with 99%+ accuracy using deep learning algorithms.</p>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="feature-card">
+            <div class="feature-icon">
+                <i class="fas fa-shield-alt"></i>
+            </div>
+            <h3>Secure & Reliable</h3>
+            <p>Enterprise-grade security with real-time processing and instant verification results.</p>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="feature-card">
+            <div class="feature-icon">
+                <i class="fas fa-tachometer-alt"></i>
+            </div>
+            <h3>Lightning Fast</h3>
+            <p>Get verification results in seconds with our optimized machine learning pipeline.</p>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-5 pt-5">
+    <div class="col-lg-6">
+        <h2 class="mb-4">How It Works</h2>
+        <div class="d-flex align-items-start mb-3">
+            <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px; flex-shrink: 0;">1</div>
+            <div>
+                <h5 class="mb-1">Upload Signature</h5>
+                <p class="text-muted mb-0">Simply upload the signature image you want to verify.</p>
+            </div>
+        </div>
+        <div class="d-flex align-items-start mb-3">
+            <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px; flex-shrink: 0;">2</div>
+            <div>
+                <h5 class="mb-1">AI Analysis</h5>
+                <p class="text-muted mb-0">Our neural network analyzes stroke patterns, pressure points, and flow.</p>
+            </div>
+        </div>
+        <div class="d-flex align-items-start mb-3">
+            <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px; flex-shrink: 0;">3</div>
+            <div>
+                <h5 class="mb-1">Instant Results</h5>
+                <p class="text-muted mb-0">Receive immediate verification with confidence scores.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="bg-light rounded-3 p-4">
+            <h4 class="mb-3">Model Performance</h4>
+            <div class="row g-3">
+                <div class="col-6">
+                    <div class="text-center">
+                        <h2 class="text-primary mb-1">98%</h2>
+                        <p class="text-muted small mb-0">Test Accuracy</p>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="text-center">
+                        <h2 class="text-primary mb-1">95.6%</h2>
+                        <p class="text-muted small mb-0">Validation Accuracy</p>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="text-center">
+                        <h2 class="text-primary mb-1">1,649</h2>
+                        <p class="text-muted small mb-0">Training Samples</p>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="text-center">
+                        <h2 class="text-primary mb-1">224×224</h2>
+                        <p class="text-muted small mb-0">Input Resolution</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="text-center mt-5 pt-5">
+    <h2 class="mb-4">Ready to Secure Your Signatures?</h2>
+    <p class="lead text-muted mb-4">Join thousands of organizations trusting SignatureGuard for document security.</p>
+    <a href="/verify" class="btn btn-primary-custom btn-lg">
+        <i class="fas fa-rocket me-2"></i>Start Verifying Now
+    </a>
+</div>
+{% endblock %}

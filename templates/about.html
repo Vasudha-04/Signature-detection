@@ -1,0 +1,121 @@
+{% extends "base.html" %}
+
+{% block title %}About - SignatureGuard{% endblock %}
+
+{% block content %}
+<div class="text-center mb-5">
+    <h1 class="display-4 fw-bold mb-3">About SignatureGuard</h1>
+    <p class="lead text-muted">Revolutionizing document security with cutting-edge AI technology</p>
+</div>
+
+<div class="row g-5 mb-5">
+    <div class="col-lg-6">
+        <h2 class="mb-4">Our Mission</h2>
+        <p class="lead">We're dedicated to providing the most reliable and accurate signature verification technology to protect businesses and individuals from fraud.</p>
+        <p>SignatureGuard leverages state-of-the-art machine learning algorithms to analyze and verify handwritten signatures with unprecedented accuracy. Our system is designed to meet the needs of financial institutions, legal firms, healthcare providers, and any organization that requires secure document authentication.</p>
+        
+        <h3 class="mt-4 mb-3">Model Architecture</h3>
+        <ul class="list-unstyled">
+            <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i> <strong>VGG16 Base:</strong> Pre-trained on ImageNet</li>
+            <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i> <strong>Transfer Learning:</strong> 14.7M frozen parameters</li>
+            <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i> <strong>Custom Layers:</strong> Dense(256) + Softmax output</li>
+            <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i> <strong>Input Size:</strong> 224×224×3 RGB images</li>
+        </ul>
+    </div>
+    <div class="col-lg-6">
+        <div class="bg-light rounded-3 p-4">
+            <h3 class="mb-4">Technical Specifications</h3>
+            <div class="mb-4">
+                <h5 class="text-primary"><i class="fas fa-brain me-2"></i>VGG16 Architecture</h5>
+                <p class="text-muted mb-0">Based on the renowned VGG16 convolutional neural network with 16 layers, pre-trained on ImageNet dataset for robust feature extraction.</p>
+            </div>
+            <div class="mb-4">
+                <h5 class="text-primary"><i class="fas fa-database me-2"></i>Training Dataset</h5>
+                <p class="text-muted mb-0">Trained on Kaggle's Signature Verification Dataset with 1,649 samples, including genuine and forged signatures across multiple subjects.</p>
+            </div>
+            <div class="mb-4">
+                <h5 class="text-primary"><i class="fas fa-chart-line me-2"></i>Performance Metrics</h5>
+                <p class="text-muted mb-0">Achieved 98% test accuracy with 95.6% validation accuracy after 20 epochs using Adam optimizer and categorical cross-entropy loss.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="bg-primary text-white rounded-3 p-5 mb-5">
+    <div class="row align-items-center">
+        <div class="col-lg-8">
+            <h2 class="mb-3">Why Choose SignatureGuard?</h2>
+            <p class="mb-4">Our system combines decades of research in graphology, machine learning, and cybersecurity to deliver unmatched signature verification capabilities.</p>
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <div class="d-flex align-items-center">
+                        <i class="fas fa-shield-alt fa-2x me-3"></i>
+                        <div>
+                            <h5 class="mb-0">Bank-Level Security</h5>
+                            <small>Meets international security standards</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="d-flex align-items-center">
+                        <i class="fas fa-bolt fa-2x me-3"></i>
+                        <div>
+                            <h5 class="mb-0">Done with Deep Learning CNN/VGG16</h5>
+                            <small>Results in under 2 seconds</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 text-center">
+            <div class="bg-white text-primary rounded-3 p-4">
+                <h2 class="mb-1">98%</h2>
+                <p class="mb-0 fw-bold">Test Accuracy</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row g-4 mb-5">
+    <div class="col-md-4">
+        <div class="text-center">
+            <div class="bg-light rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
+                <i class="fas fa-images fa-2x text-primary"></i>
+            </div>
+            <h4>1,649 Images</h4>
+            <p class="text-muted">Training samples used</p>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="text-center">
+            <div class="bg-light rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
+                <i class="fas fa-layer-group fa-2x text-primary"></i>
+            </div>
+            <h4>20 Epochs</h4>
+            <p class="text-muted">Training iterations</p>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="text-center">
+            <div class="bg-light rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
+                <i class="fas fa-microchip fa-2x text-primary"></i>
+            </div>
+            <h4>21M Parameters</h4>
+            <p class="text-muted">Neural network complexity</p>
+        </div>
+    </div>
+</div>
+
+<div class="text-center">
+    <h2 class="mb-4">Get Started Today</h2>
+    <p class="lead text-muted mb-4">Experience the future of signature verification with our cutting-edge AI technology.</p>
+    <div class="d-flex gap-3 justify-content-center flex-wrap">
+        <a href="/verify" class="btn btn-primary-custom btn-lg">
+            <i class="fas fa-play me-2"></i>Try Demo
+        </a>
+        <a href="/" class="btn btn-outline-primary btn-lg">
+            <i class="fas fa-home me-2"></i>Back to Home
+        </a>
+    </div>
+</div>
+{% endblock %}
