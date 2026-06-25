@@ -1,0 +1,14 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Flask / general
+instance/
+.env
+.venv
+venv/
+
+# Model / artifacts (optional: keep if you want them committed)
+# signature_model.h5
+

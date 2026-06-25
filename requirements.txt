@@ -1,6 +1,6 @@
-Flask
+Flask>=2.2
 numpy
 opencv-python-headless
 tensorflow
 Pillow
-gunicorn
+waitress>=3.0
