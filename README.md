@@ -48,20 +48,36 @@ cd <project-folder>
 ### Install Dependencies
 
 ```bash
-pip install flask numpy opencv-python pillow tensorflow
+pip install -r requirements.txt
 ```
 
-### Run the Application
+### Run (Local)
+
+**Flask (web server):**
 
 ```bash
 python app.py
 ```
 
-### Open in Browser
+Open:
 
 ```text
 http://127.0.0.1:5000
 ```
+
+**Streamlit (recommended for Streamlit hosting):**
+
+```bash
+pip install streamlit
+streamlit run streamlit_app.py
+```
+
+Open:
+
+```text
+http://localhost:8501
+```
+
 
 ## Usage
 
